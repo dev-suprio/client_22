@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("./img/bg.png") repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .pera {
+            font-size: 18px;
+            color: #cfc5c5;
+            display: flex;
+            justify-content: left;
+            margin-bottom: 20px;
+        }
+
+        .pera-blod {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+        }
+
+        /* Button Style */
+        .gradient-button-1 {
+            /* ... (your existing styles) ... */
+            position: relative;
+            background: linear-gradient(to right, #bb2424, #f39821);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .gradient-button-1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 5px solid transparent;
+            border-radius: 5px;
+            opacity: 0;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+                border-color: white;
+            }
+        }
+
+        .gradient-button-2 {
+            /* ... (your existing styles) ... */
+            position: relative;
+            background: linear-gradient(to right, #bb2424, #f39821);
+            border: none;
+            color: white;
+            padding: 15px 200px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            /* Changed to "block" to ensure it's on a separate line */
+            font-size: 16px;
+            margin: 10px auto;
+            /* Centered horizontally */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .gradient-button-2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 5px solid transparent;
+            border-radius: 5px;
+            opacity: 0;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .gradient-button-2 {
+                padding: 15px 70px;
+            }
+        }
+
+        .des {
+            color: #ffffff;
+        }
+
+        /* Style for the text area */
+        textarea {
+            width: 100%;
+            padding: 0;
+            border-radius: 5px;
+        }
+
+        /* Style for the image */
+        #image-container {
+            display: none;
+        }
+
+        /* Style for the slider */
+        #slider-container {
+            display: none;
+        }
+
+        .slider-img {
+            margin: 10px;
+        }
+
+        .slider-des {
+            font-size: 18px;
+            color: #ffffff;
+            text-shadow: 1px 2px rgb(13, 0, 255);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Style for the first progress bar Start */
+        .progress-container {
+            font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+            margin: 60px auto;
+            width: 400px;
+            text-align: center;
+        }
+
+        .progress-container .progress {
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        .progress {
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 2px rgb(255, 255, 255), 0 1px rgba(246, 246, 246, 0.08);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 1px rgba(255, 233, 233, 0.08);
+        }
+
+        .progress-bar {
+            height: 16px;
+            border-radius: 4px;
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            -webkit-transition: 0.4s linear;
+            -moz-transition: 0.4s linear;
+            -o-transition: 0.4s linear;
+            transition: 0.4s linear;
+            -webkit-transition-property: width, background-color;
+            -moz-transition-property: width, background-color;
+            -o-transition-property: width, background-color;
+            transition-property: width, background-color;
+            -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #five:checked~.progress>.progress-bar {
+            width: 5%;
+            background-color: #f63a0f;
+        }
+
+        #twentyfive:checked~.progress>.progress-bar {
+            width: 25%;
+            background-color: #f27011;
+        }
+
+        #fifty:checked~.progress>.progress-bar {
+            width: 50%;
+            background-color: #f2b01e;
+        }
+
+        #seventyfive:checked~.progress>.progress-bar {
+            width: 75%;
+            background-color: #f2d31b;
+        }
+
+        #onehundred:checked~.progress>.progress-bar {
+            width: 100%;
+            background-color: #86e01e;
+        }
+
+        .radio {
+            display: none;
+        }
+
+        .label {
+            display: inline-block;
+            font-size: 20px;
+            margin: 0 5px 20px;
+            padding: 3px 8px;
+            color: #000000;
+            text-shadow: 0 1px rgb(255, 255, 255);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .radio:checked+.label {
+            color: rgb(255, 255, 255);
+            background: #f59247be;
+        }
+
+        /* Style for the first progress bar End */
+        /* Style for the second progress bar Start */
+        .progress-container {
+            font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+            margin: 60px auto;
+            width: 400px;
+            text-align: center;
+        }
+
+        .progress2 {
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 2px rgb(255, 255, 255), 0 1px rgba(246, 246, 246, 0.08);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 1px rgba(255, 233, 233, 0.08);
+        }
+
+        .progress-bar2 {
+            height: 16px;
+            border-radius: 4px;
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            -webkit-transition: 0.4s linear;
+            -moz-transition: 0.4s linear;
+            -o-transition: 0.4s linear;
+            transition: 0.4s linear;
+            -webkit-transition-property: width, background-color;
+            -moz-transition-property: width, background-color;
+            -o-transition-property: width, background-color;
+            transition-property: width, background-color;
+            -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #ten:checked~.progress2>.progress-bar2 {
+            width: 5%;
+            background-color: #f63a0f;
+        }
+
+        #thirty:checked~.progress2>.progress-bar2 {
+            width: 25%;
+            background-color: #f27011;
+        }
+
+        #sixty:checked~.progress2>.progress-bar2 {
+            width: 50%;
+            background-color: #f2b01e;
+        }
+
+        #ninety:checked~.progress2>.progress-bar2 {
+            width: 75%;
+            background-color: #f2d31b;
+        }
+
+        #onehundred2:checked~.progress2>.progress-bar2 {
+            width: 100%;
+            background-color: #86e01e;
+        }
+
+        .radio {
+            display: none;
+        }
+
+        .radi {
+            color: #ffffff;
+        }
+
+        .label {
+            display: inline-block;
+            font-size: 20px;
+            margin: 0 5px 20px;
+            padding: 3px 8px;
+            color: #ffffff;
+            text-shadow: 2px 2px rgb(0, 195, 255);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+
+        /* Style for the second progress bar End */
+        /* Style for the third progress bar Start */
+        .progress3 {
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 2px rgb(255, 255, 255), 0 1px rgba(246, 246, 246, 0.08);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 1px rgba(255, 233, 233, 0.08);
+        }
+
+        .progress-bar3 {
+            height: 16px;
+            border-radius: 4px;
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            -webkit-transition: 0.4s linear;
+            -moz-transition: 0.4s linear;
+            -o-transition: 0.4s linear;
+            transition: 0.4s linear;
+            -webkit-transition-property: width, background-color;
+            -moz-transition-property: width, background-color;
+            -o-transition-property: width, background-color;
+            transition-property: width, background-color;
+            -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #fifteen:checked~.progress3>.progress-bar3 {
+            width: 5%;
+            background-color: #f63a0f;
+        }
+
+        #forty:checked~.progress3>.progress-bar3 {
+            width: 25%;
+            background-color: #f27011;
+        }
+
+        #seventy:checked~.progress3>.progress-bar3 {
+            width: 50%;
+            background-color: #f2b01e;
+        }
+
+        #ninetyfive:checked~.progress3>.progress-bar3 {
+            width: 75%;
+            background-color: #f2d31b;
+        }
+
+        #onehundred3:checked~.progress3>.progress-bar3 {
+            width: 100%;
+            background-color: #86e01e;
+        }
+
+        /* Style for the third progress bar End */
+        /* Style for the fourth progress bar Start */
+        .progress4 {
+            padding: 4px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .progress-bar4 {
+            height: 16px;
+            border-radius: 4px;
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            -webkit-transition: 0.4s linear;
+            -moz-transition: 0.4s linear;
+            -o-transition: 0.4s linear;
+            transition: 0.4s linear;
+            -webkit-transition-property: width, background-color;
+            -moz-transition-property: width, background-color;
+            -o-transition-property: width, background-color;
+            transition-property: width, background-color;
+            -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #ten4:checked~.progress4>.progress-bar4 {
+            width: 5%;
+            background-color: #f63a0f;
+        }
+
+        #thirty4:checked~.progress4>.progress-bar4 {
+            width: 25%;
+            background-color: #f27011;
+        }
+
+        #fifty4:checked~.progress4>.progress-bar4 {
+            width: 50%;
+            background-color: #f2b01e;
+        }
+
+        #seventy4:checked~.progress4>.progress-bar4 {
+            width: 75%;
+            background-color: #f2d31b;
+        }
+
+        #onehundred4:checked~.progress4>.progress-bar4 {
+            width: 100%;
+            background-color: #86e01e;
+        }
+
+        /* Style for the fourth progress bar End */
+        /* Style for the fifth progress bar Start */
+        .progress5 {
+            padding: 4px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .progress-bar5 {
+            height: 16px;
+            border-radius: 4px;
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            -webkit-transition: 0.4s linear;
+            -moz-transition: 0.4s linear;
+            -o-transition: 0.4s linear;
+            transition: 0.4s linear;
+            -webkit-transition-property: width, background-color;
+            -moz-transition-property: width, background-color;
+            -o-transition-property: width, background-color;
+            transition-property: width, background-color;
+            -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #ten5:checked~.progress5>.progress-bar5 {
+            width: 5%;
+            background-color: #f63a0f;
+        }
+
+        #twentyfive5:checked~.progress5>.progress-bar5 {
+            width: 25%;
+            background-color: #f27011;
+        }
+
+        #fifty5:checked~.progress5>.progress-bar5 {
+            width: 50%;
+            background-color: #f2b01e;
+        }
+
+        #eighty5:checked~.progress5>.progress-bar5 {
+            width: 75%;
+            background-color: #f2d31b;
+        }
+
+        #onehundred5:checked~.progress5>.progress-bar5 {
+            width: 100%;
+            background-color: #86e01e;
+        }
+
+        /* Style for the fifth progress bar End */
+        /* Style for the sixth progress bar Start */
+        .progress6 {
+            padding: 4px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .progress-bar6 {
+            height: 16px;
+            border-radius: 4px;
+            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            -webkit-transition: 0.4s linear;
+            -moz-transition: 0.4s linear;
+            -o-transition: 0.4s linear;
+            transition: 0.4s linear;
+            -webkit-transition-property: width, background-color;
+            -moz-transition-property: width, background-color;
+            -o-transition-property: width, background-color;
+            transition-property: width, background-color;
+            -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        #fifteen6:checked~.progress6>.progress-bar6 {
+            width: 5%;
+            background-color: #f63a0f;
+        }
+
+        #thirty6:checked~.progress6>.progress-bar6 {
+            width: 25%;
+            background-color: #f27011;
+        }
+
+        #sixty6:checked~.progress6>.progress-bar6 {
+            width: 50%;
+            background-color: #f2b01e;
+        }
+
+        #ninety6:checked~.progress6>.progress-bar6 {
+            width: 75%;
+            background-color: #f2d31b;
+        }
+
+        #onehundred6:checked~.progress6>.progress-bar6 {
+            width: 100%;
+            background-color: #86e01e;
+        }
+        /* Style for the sixth progress bar End */
+        /* Style for the seventh progress bar Start */
+.progress7 {
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar7 {
+    height: 16px;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+#ten7:checked~.progress7>.progress-bar7 {
+    width: 5%;
+    background-color: #f63a0f;
+}
+
+#twenty7:checked~.progress7>.progress-bar7 {
+    width: 25%;
+    background-color: #f27011;
+}
+
+#forty7:checked~.progress7>.progress-bar7 {
+    width: 50%;
+    background-color: #f2b01e;
+}
+
+#sixty7:checked~.progress7>.progress-bar7 {
+    width: 76%;
+    background-color: #f2d31b;
+}
+
+#onehundred7:checked~.progress7>.progress-bar7 {
+    width: 100%;
+    background-color: #86e01e;
+}
+/* Style for the seventh progress bar End */
+/* Style for the eighth progress bar Start */
+.progress8 {
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar8 {
+    height: 16px;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+#fifteen8:checked~.progress8>.progress-bar8 {
+    width: 5%;
+    background-color: #f63a0f;
+}
+
+#thirty8:checked~.progress8>.progress-bar8 {
+    width: 25%;
+    background-color: #f27011;
+}
+
+#fifty8:checked~.progress8>.progress-bar8 {
+    width: 50%;
+    background-color: #f2b01e;
+}
+
+#eighty8:checked~.progress8>.progress-bar8 {
+    width: 75%;
+    background-color: #f2d31b;
+}
+
+#onehundred8:checked~.progress8>.progress-bar8 {
+    width: 100%;
+    background-color: #86e01e;
+}
+/* Style for the eighth progress bar End */
+/* Style for the ninth progress bar Start */
+.progress9 {
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar9 {
+    height: 16px;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+#ten9:checked~.progress9>.progress-bar9 {
+    width: 5%;
+    background-color: #f63a0f;
+}
+
+#twenty9:checked~.progress9>.progress-bar9 {
+    width: 25%;
+    background-color: #f27011;
+}
+
+#forty9:checked~.progress9>.progress-bar9 {
+    width: 50%;
+    background-color: #f2b01e;
+}
+
+#sixty9:checked~.progress9>.progress-bar9 {
+    width: 75%;
+    background-color: #f2d31b;
+}
+
+#onehundred9:checked~.progress9>.progress-bar9 {
+    width: 100%;
+    background-color: #86e01e;
+}
+/* Style for the ninth progress bar End */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cara Edit Akun Menjadi PRO</h1>
+        <p class="pera">1. Pastikan untuk daftar USER ID anda terlebih dahulu.</p>
+        <p class="pera">2. Harus memiliki saldo di dalam USER ID yang ingin di upgrade.</p>
+
+        <!-- Link Change Hare -->
+        <a href="google.com" class="gradient-button-1">DAFTAR DISINI</a>
+
+        <p class="pera-blod">Masukkan User ID Yang Telah Anda Daftarkan</p>
+        <textarea class="textarea" rows="4" cols="50" placeholder="Tulis User ID Anda Disini"></textarea>
+
+        <!-- Radio buttons -->
+        <p class="pera-blod">Pilih Provider Game Yang Ingin Diedit</p>
+        <label class="radi">
+            <input type="radio" name="image-option" id="show-image" value="image">
+            Pragmatic Play
+        </label>
+        <label class="radi">
+            <input type="radio" name="image-option" id="show-slider" value="slider">
+            PG Soft
+        </label>
+        <label class="radi">
+            <input type="radio" name="image-option" id="show-micrograming" value="image">
+            Micrograming
+        </label>
+
+        <!-- Pragmatic Play Container Start -->
+        <div id="image-container">
+            <p class="pera-blod">Cara Mengedit Akun</p>
+            <p class="des">
+                Geser persentase kesempatan mendapatkan fitur dibawah ini sesuai keinginan anda.
+                <br>
+                (Persentase paling tinggi hanya bisa di angka 99% untuk menghindari kecurigaan pihak ADMIN. Mohon untuk
+                tidak membahas tools ini kepada pihak customer service!)
+            </p>
+            <!-- First progress bar container Start -->
+            <div class="progress-container">
+                <div class="slider-img">
+                    <img src="./img/slider1.1.png" alt="Image" width="200">
+                </div>
+                <p class="slider-des">
+                    Persentase Mendapatkan Sensational (%)
+                </p>
+                <input type="radio" class="radio" name="progress" value="five" id="five">
+                <label for="five" class="label">90%</label>
+
+                <input type="radio" class="radio" name="progress" value="twentyfive" id="twentyfive" checked>
+                <label for="twentyfive" class="label">92%</label>
+
+                <input type="radio" class="radio" name="progress" value="fifty" id="fifty">
+                <label for="fifty" class="label">94%</label>
+
+                <input type="radio" class="radio" name="progress" value="seventyfive" id="seventyfive">
+                <label for="seventyfive" class="label">96%</label>
+
+                <input type="radio" class="radio" name="progress" value="onehundred" id="onehundred">
+                <label for="onehundred" class="label">98%</label>
+
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            <!-- First progress bar container End  -->
+            <!-- Second progress bar container Start -->
+            <div class="progress-container">
+                <div class="slider-img">
+                    <img src="./img/slider1.2.png" alt="Image" width="100">
+                </div>
+                <p class="slider-des">
+                    Persentase Mendapatkan Perkalian Besar (%)
+                </p>
+                <input type="radio" class="radio" name="progress2" value="ten" id="ten">
+                <label for="ten" class="label">90%</label>
+
+                <input type="radio" class="radio" name="progress2" value="thirty" id="thirty" checked>
+                <label for="thirty" class="label">92%</label>
+
+                <input type="radio" class="radio" name="progress2" value="sixty" id="sixty">
+                <label for="sixty" class="label">94%</label>
+
+                <input type="radio" class="radio" name="progress2" value="ninety" id="ninety">
+                <label for="ninety" class="label">96%</label>
+
+                <input type="radio" class="radio" name="progress2" value="onehundred2" id="onehundred2">
+                <label for="onehundred2" class="label">98%</label>
+
+                <div class="progress2">
+                    <div class="progress-bar2"></div>
+                </div>
+            </div>
+            <!-- Second progress bar container End  -->
+            <!-- Third progress bar container Start -->
+            <div class="progress-container">
+                <div class="slider-img">
+                    <img src="./img/slider1.3.png" alt="Image" width="100">
+                </div>
+                <p class="slider-des">
+                    Persentase Mendapatkan Scatter (%)
+                </p>
+                <input type="radio" class="radio" name="progress3" value="fifteen" id="fifteen">
+                <label for="fifteen" class="label">90%</label>
+
+                <input type="radio" class="radio" name="progress3" value="forty" id="forty" checked>
+                <label for="forty" class="label">92%</label>
+
+                <input type="radio" class="radio" name="progress3" value="seventy" id="seventy">
+                <label for="seventy" class="label">94%</label>
+
+                <input type="radio" class="radio" name="progress3" value="ninetyfive" id="ninetyfive">
+                <label for="ninetyfive" class="label">96%</label>
+
+                <input type="radio" class="radio" name="progress3" value="onehundred3" id="onehundred3">
+                <label for="onehundred3" class="label">98%</label>
+
+                <div class="progress3">
+                    <div class="progress-bar3"></div>
+                </div>
+            </div>
+            <!-- Third progress bar container End  -->
+        </div>
+        <!-- Pragmatic Play Container End -->
+        <!--  PG Soft Container Start -->
+        <div id="slider-container">
+            <p class="pera-blod">Cara Mengedit Akun</p>
+            <p class="des">
+                Geser persentase kesempatan mendapatkan fitur dibawah ini sesuai keinginan anda.
+                <br>
+                (Persentase paling tinggi hanya bisa di angka 99% untuk menghindari kecurigaan pihak ADMIN. Mohon untuk
+                tidak
+                membahas tools ini kepada pihak customer service!)
+            </p>
+            <!-- Fourth progress bar container Start -->
+            <div class="progress-container">
+                <div class="slider-img">
+                    <img src="./img/slider2.1.png" alt="Image" width="200">
+                </div>
+                <p class="slider-des">
+                    Persentase Mendapatkan Super Luar Biaas (%)
+                </p>
+                <input type="radio" class="radio" name="progress4" value="ten" id="ten4">
+                <label for="ten4" class="label">90%</label>
+
+                <input type="radio" class="radio" name="progress4" value="thirty" id="thirty4" checked>
+                <label for="thirty4" class="label">92%</label>
+
+                <input type="radio" class="radio" name="progress4" value="fifty" id="fifty4">
+                <label for="fifty4" class="label">94%</label>
+
+                <input type="radio" class="radio" name="progress4" value="seventy" id="seventy4">
+                <label for="seventy4" class="label">96%</label>
+
+                <input type="radio" class="radio" name="progress4" value="onehundred4" id="onehundred4">
+                <label for="onehundred4" class="label">100%</label>
+
+                <div class="progress4">
+                    <div class="progress-bar4"></div>
+                </div>
+            </div>
+            <!-- Fourth progress bar container End  -->
+            <!-- Fifth progress bar container Start -->
+            <div class="progress-container">
+                <div class="slider-img">
+                    <img src="./img/slider2.2.png" alt="Image" width="50">
+                </div>
+                <p class="slider-des">
+                    Persentase Mendapatkan Wild (%)
+                </p>
+                <input type="radio" class="radio" name="progress5" value="ten" id="ten5">
+                <label for="ten5" class="label">90%</label>
+
+                <input type="radio" class="radio" name="progress5" value="twentyfive" id="twentyfive5" checked>
+                <label for="twentyfive5" class="label">92%</label>
+
+                <input type="radio" class="radio" name="progress5" value="fifty" id="fifty5">
+                <label for="fifty5" class="label">94%</label>
+
+                <input type="radio" class="radio" name="progress5" value="eighty" id="eighty5">
+                <label for="eighty5" class="label">96%</label>
+
+                <input type="radio" class="radio" name="progress5" value="onehundred5" id="onehundred5">
+                <label for="onehundred5" class="label">100%</label>
+
+                <div class="progress5">
+                    <div class="progress-bar5"></div>
+                </div>
+            </div>
+            <!-- Fifth progress bar container End  -->
+            <!-- Sixth progress bar container Start -->
+            <div class="progress-container">
+                <div class="slider-img">
+                    <img src="./img/slider2.3.png" alt="Image" width="50">
+                </div>
+                <p class="slider-des">
+                    Persentase Mendapatkan Scatter (%)
+                </p>
+                <input type="radio" class="radio" name="progress6" value="fifteen" id="fifteen6">
+                <label for="fifteen6" class="label">15%</label>
+
+                <input type="radio" class="radio" name="progress6" value="thirty" id="thirty6" checked>
+                <label for="thirty6" class="label">30%</label>
+
+                <input type="radio" class="radio" name="progress6" value="sixty" id="sixty6">
+                <label for="sixty6" class="label">60%</label>
+
+                <input type="radio" class="radio" name="progress6" value="ninety" id="ninety6">
+                <label for="ninety6" class="label">90%</label>
+
+                <input type="radio" class="radio" name="progress6" value="onehundred6" id="onehundred6">
+                <label for="onehundred6" class="label">100%</label>
+
+                <div class="progress6">
+                    <div class="progress-bar6"></div>
+                </div>
+            </div>
+            <!-- Sixth progress bar container End  -->
+        </div>
+        <!--  PG Soft Container End -->
+        <!--  Micro Container Start -->
+        <div id="micro-container" style="display: none;">
+            <p class="pera-blod">Micro container</p>
+            <p class="des">
+                Geser persentase kesempatan mendapatkan fitur dibawah ini sesuai keinginan anda.
+                <br>
+                (Persentase paling tinggi hanya bisa di angka 99% untuk menghindari kecurigaan pihak ADMIN. Mohon untuk
+                tidak membahas tools ini kepada pihak customer service!)
+            </p>
+            <!-- Seventh progress bar container Start -->
+<div class="progress-container">
+    <div class="slider-img">
+        <img src="./img/slider3.1.png" alt="Image" width="200">
+    </div>
+    <p class="slider-des">
+        Persentase Mendapatkan Special Discount (%)
+    </p>
+    <input type="radio" class="radio" name="progress7" value="ten" id="ten7">
+    <label for="ten7" class="label">90%</label>
+
+    <input type="radio" class="radio" name="progress7" value="twenty" id="twenty7" checked>
+    <label for="twenty7" class="label">92%</label>
+
+    <input type="radio" class="radio" name="progress7" value="forty" id="forty7">
+    <label for="forty7" class="label">94%</label>
+
+    <input type="radio" class="radio" name="progress7" value="sixty" id="sixty7">
+    <label for="sixty7" class="label">96%</label>
+
+    <input type="radio" class="radio" name="progress7" value="onehundred7" id="onehundred7">
+    <label for="onehundred7" class="label">98%</label>
+
+    <div class="progress7">
+        <div class="progress-bar7"></div>
+    </div>
+</div>
+<!-- Seventh progress bar container End  -->
+<!-- Eighth progress bar container Start -->
+<div class="progress-container">
+    <div class="slider-img">
+        <img src="./img/slider3.1.png" alt="Image" width="200">
+    </div>
+    <p class="slider-des">
+        Persentase Mendapatkan Voucher Diskon (%)
+    </p>
+    <input type="radio" class="radio" name="progress8" value="fifteen" id="fifteen8">
+    <label for="fifteen8" class="label">90%</label>
+
+    <input type="radio" class="radio" name="progress8" value="thirty" id="thirty8" checked>
+    <label for="thirty8" class="label">92%</label>
+
+    <input type="radio" class="radio" name="progress8" value="fifty" id="fifty8">
+    <label for="fifty8" class="label">94%</label>
+
+    <input type="radio" class="radio" name="progress8" value="eighty" id="eighty8">
+    <label for="eighty8" class="label">96%</label>
+
+    <input type="radio" class="radio" name="progress8" value="onehundred8" id="onehundred8">
+    <label for="onehundred8" class="label">98%</label>
+
+    <div class="progress8">
+        <div class="progress-bar8"></div>
+    </div>
+</div>
+<!-- Eighth progress bar container End  -->
+<!-- Ninth progress bar container Start -->
+<div class="progress-container">
+    <div class="slider-img">
+        <img src="./img/slider3.1.png" alt="Image" width="200">
+    </div>
+    <p class="slider-des">
+        Persentase Mendapatkan Gift Card (%)
+    </p>
+    <input type="radio" class="radio" name="progress9" value="ten" id="ten9">
+    <label for="ten9" class="label">90%</label>
+
+    <input type="radio" class="radio" name="progress9" value="twenty" id="twenty9" checked>
+    <label for="twenty9" class="label">92%</label>
+
+    <input type="radio" class="radio" name="progress9" value="forty" id="forty9">
+    <label for="forty9" class="label">94%</label>
+
+    <input type="radio" class="radio" name="progress9" value="sixty" id="sixty9">
+    <label for="sixty9" class="label">96%</label>
+
+    <input type="radio" class="radio" name="progress9" value="onehundred9" id="onehundred9">
+    <label for="onehundred9" class="label">98%</label>
+
+    <div class="progress9">
+        <div class="progress-bar9"></div>
+    </div>
+</div>
+<!-- Ninth progress bar container End  -->
+        </div>
+        <!--  Micro Container End -->
+
+        <!-- Link Change Hare -->
+        <a href="" id="gradient-button-2" class="gradient-button-2">UPGRADE AKUN</a>
+        <!-- <button class="gradient-button-2" id="gradient-button-2">UPGRADE AKUN</button> -->
+        <div id="message" style="color: red;"></div>
+
+    </div>
+    <script>
+        document.getElementById("gradient-button-2").addEventListener("click", function () {
+            // Display the first message in red
+            document.getElementById("message").textContent = "SEDANG PROSES UPGRADE AKUN ANDA, MOHON DITUNGGU...";
+            document.getElementById("message").style.color = "red";
+
+            // Simulate a delay (you can change the duration in milliseconds)
+            setTimeout(function () {
+                // Display the second message in green
+                document.getElementById("message").textContent = "UPGRADE BERHASIL! MENUJU KE SITUS...";
+                document.getElementById("message").style.color = "green";
+
+                // Open the example link in a new window after showing the 2nd message
+                setTimeout(function () {
+                    window.open("https://facebook.com", "_blank");
+                }, 3000); // Open the link in a new window after 1 second
+            }, 1500); // Display the second message after 2 seconds
+        });
+    </script>
+    <script>
+        // JavaScript to show/hide image, slider, and micro-container based on radio button selection
+        const showImageRadio = document.getElementById("show-image");
+        const showSliderRadio = document.getElementById("show-slider");
+        const showMicrogramingRadio = document.getElementById("show-micrograming");
+        const imageContainer = document.getElementById("image-container");
+        const sliderContainer = document.getElementById("slider-container");
+        const microContainer = document.getElementById("micro-container");
+    
+        showImageRadio.addEventListener("change", function () {
+            if (showImageRadio.checked) {
+                imageContainer.style.display = "block";
+                sliderContainer.style.display = "none";
+                microContainer.style.display = "none";
+            }
+        });
+    
+        showSliderRadio.addEventListener("change", function () {
+            if (showSliderRadio.checked) {
+                sliderContainer.style.display = "block";
+                imageContainer.style.display = "none";
+                microContainer.style.display = "none";
+            }
+        });
+    
+        showMicrogramingRadio.addEventListener("change", function () {
+            if (showMicrogramingRadio.checked) {
+                microContainer.style.display = "block";
+                imageContainer.style.display = "none";
+                sliderContainer.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
